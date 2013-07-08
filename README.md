@@ -1,6 +1,6 @@
-# Работа с RSS.
+# RSS
 
-Пример:
+Example:
 ```php
 <?php
 require 'Rss.php';

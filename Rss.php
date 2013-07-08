@@ -7,16 +7,20 @@
  * @copyright 2012 http://wapinet.ru
  * @license   http://www.gnu.org/licenses/gpl-3.0.txt
  * @link      https://github.com/Gemorroj/Rss
- * @version   0.1
+ * @version   0.2
  *
  */
 
 class Rss extends DOMDocument
 {
     /**
+     * @var string
+     */
+    protected $charset = 'UTF-8';
+    /**
      * @var DOMNode
      */
-    private $channel;
+    protected $channel;
 
 
     /**
@@ -26,7 +30,7 @@ class Rss extends DOMDocument
      */
     public function __construct($title, $link, $description)
     {
-        parent::__construct('1.0', 'UTF-8');
+        parent::__construct('1.0', $this->charset);
 
         $date = new DateTime();
         $root = $this->createElement('rss');
@@ -70,7 +74,7 @@ class Rss extends DOMDocument
      */
     public function output()
     {
-        header('Content-Type: application/rss+xml; charset=UTF-8');
+        header('Content-Type: application/rss+xml; charset=' . $this->charset);
         echo $this->saveXML();
     }
 }

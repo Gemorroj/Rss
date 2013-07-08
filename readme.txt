@@ -1,6 +1,6 @@
-Работа с RSS.
+RSS
 
-Пример:
+Example:
 require 'Rss.php';
 
 $rss = new Rss('example.com rss', 'http://example.com', 'some description');
