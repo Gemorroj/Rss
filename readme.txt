@@ -1,6 +1,10 @@
 RSS
 
+Requirements:
+PHP >= 5.2
+
 Example:
+<?php
 require 'Rss.php';
 
 $rss = new Rss('example.com rss', 'http://example.com', 'some description');

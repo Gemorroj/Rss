@@ -1,5 +1,12 @@
 # RSS
 
+[![Build Status](https://secure.travis-ci.org/Gemorroj/Rss.png?branch=master)](https://travis-ci.org/Gemorroj/Rss)
+
+Requirements:
+
+- PHP >= 5.2
+
+
 Example:
 ```php
 <?php
