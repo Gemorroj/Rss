@@ -1,0 +1,23 @@
+{
+    "name": "gemorroj/rss",
+    "description": "rss parser",
+    "keywords": ["rss", "Rich Site Summary"],
+    "type": "library",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Gemorroj"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8|~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rss\\": "src/Rss"
+        }
+    }
+}

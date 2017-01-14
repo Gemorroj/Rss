@@ -1,20 +1,14 @@
 <?php
-/**
- * This software is distributed under the GNU GPL v3.0 license.
- *
- * @author    Gemorroj
- * @copyright 2015 http://wapinet.ru
- * @license   http://www.gnu.org/licenses/gpl-3.0.txt
- * @link      https://github.com/Gemorroj/Rss
- */
-class Rss extends DOMDocument
+namespace Rss;
+
+class Rss extends \DOMDocument
 {
     /**
      * @var string
      */
     protected $charset = 'UTF-8';
     /**
-     * @var DOMNode
+     * @var \DOMNode
      */
     protected $channel;
 
@@ -28,7 +22,7 @@ class Rss extends DOMDocument
     {
         parent::__construct('1.0', $this->charset);
 
-        $date = new DateTime();
+        $date = new \DateTime();
         $root = $this->createElement('rss');
         $root->setAttribute('version', '2.0');
         $rss = $this->appendChild($root);
@@ -38,7 +32,7 @@ class Rss extends DOMDocument
         $channel->appendChild($this->createElement('title', $title));
         $channel->appendChild($this->createElement('link', $link));
         $channel->appendChild($this->createElement('description', $description));
-        $channel->appendChild($this->createElement('pubDate', $date->format(DateTime::RSS)));
+        $channel->appendChild($this->createElement('pubDate', $date->format(\DateTime::RSS)));
 
         $this->channel = $channel;
     }
@@ -48,9 +42,9 @@ class Rss extends DOMDocument
      * @param string         $title
      * @param string         $link
      * @param string         $description
-     * @param DateTime       $date
+     * @param \DateTime       $date
      */
-    public function addItem($title, $link, $description, DateTime $date = null)
+    public function addItem($title, $link, $description, \DateTime $date = null)
     {
         $item = $this->createElement('item');
         $item->appendChild($this->createElement('title', $title));
@@ -58,7 +52,7 @@ class Rss extends DOMDocument
         $item->appendChild($this->createElement('description', $description));
 
         if ($date !== null) {
-            $item->appendChild($this->createElement('pubDate', $date->format(DateTime::RSS)));
+            $item->appendChild($this->createElement('pubDate', $date->format(\DateTime::RSS)));
         }
 
         $this->channel->appendChild($item);

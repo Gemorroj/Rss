@@ -2,15 +2,33 @@
 
 [![Build Status](https://secure.travis-ci.org/Gemorroj/Rss.png?branch=master)](https://travis-ci.org/Gemorroj/Rss)
 
-Requirements:
+### Requirements:
 
-- PHP >= 5.2
+- PHP >= 5.3
+
+
+### Installation:
+
+- Add to composer.json:
+
+```json
+{
+    "require": {
+        "gemorroj/rss": "dev-master"
+    }
+}
+```
+- install project:
+
+```bash
+$ composer update gemorroj/rss
+```
 
 
 Example:
 ```php
 <?php
-require 'Rss.php';
+use Rss\Rss;
 
 $rss = new Rss('example.com rss', 'http://example.com', 'some description');
 $rss->addItem(
@@ -20,5 +38,5 @@ $rss->addItem(
     new DateTime('yesterday')
 );
 
-echo $rss->output();
+echo $rss->output(); // rss xml
 ```
