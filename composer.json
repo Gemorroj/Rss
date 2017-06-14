@@ -17,7 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rss\\": "src/Rss"
+            "Rss\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rss\\Tests\\": "tests/"
         }
     }
 }
