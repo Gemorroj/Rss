@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Rss;
+namespace Rss\Tests;
 
 class RssTest extends \PHPUnit_Framework_TestCase
 {
