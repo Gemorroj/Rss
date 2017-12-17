@@ -3,7 +3,12 @@ namespace Rss\Tests;
 
 use Rss\Rss;
 
-class RssTest extends \PHPUnit_Framework_TestCase
+// backward compatibility for php 5.5 and low (with phpunit < v.6)
+if (!\class_exists('\PHPUnit\Framework\TestCase') && \class_exists('\PHPUnit_Framework_TestCase')) {
+    \class_alias('\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase');
+}
+
+class RssTest extends \PHPUnit\Framework\TestCase
 {
     public function testRss()
     {
