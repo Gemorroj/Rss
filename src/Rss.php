@@ -64,7 +64,7 @@ class Rss extends \DOMDocument
      */
     public function output()
     {
-        header('Content-Type: application/rss+xml; charset=' . $this->charset);
+        \header('Content-Type: application/rss+xml; charset=' . $this->charset);
         echo $this->saveXML();
     }
 }
