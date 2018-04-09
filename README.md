@@ -8,20 +8,8 @@
 
 
 ### Installation:
-
-- Add to composer.json:
-
-```json
-{
-    "require": {
-        "gemorroj/rss": "dev-master"
-    }
-}
-```
-- install project:
-
 ```bash
-$ composer update gemorroj/rss
+composer require gemorroj/rss
 ```
 
 
