@@ -12,13 +12,7 @@ class Rss extends \DOMDocument
      */
     protected $channel;
 
-
-    /**
-     * @param string $title
-     * @param string $link
-     * @param string $description
-     */
-    public function __construct($title, $link, $description)
+    public function __construct(string $title, string $link, string $description)
     {
         parent::__construct('1.0', $this->charset);
 
@@ -38,13 +32,7 @@ class Rss extends \DOMDocument
     }
 
 
-    /**
-     * @param string         $title
-     * @param string         $link
-     * @param string         $description
-     * @param \DateTime       $date
-     */
-    public function addItem($title, $link, $description, \DateTime $date = null)
+    public function addItem(string $title, string $link, string $description, ?\DateTime $date = null): void
     {
         $item = $this->createElement('item');
         $item->appendChild($this->createElement('title', $title));
@@ -62,7 +50,7 @@ class Rss extends \DOMDocument
     /**
      * Output rss
      */
-    public function output()
+    public function output(): void
     {
         \header('Content-Type: application/rss+xml; charset=' . $this->charset);
         echo $this->saveXML();

@@ -1,14 +1,10 @@
 <?php
 namespace Rss\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Rss\Rss;
 
-// backward compatibility for php 5.5 and low (with phpunit < v.6)
-if (!\class_exists('\PHPUnit\Framework\TestCase') && \class_exists('\PHPUnit_Framework_TestCase')) {
-    \class_alias('\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase');
-}
-
-class RssTest extends \PHPUnit\Framework\TestCase
+class RssTest extends TestCase
 {
     public function testRss()
     {
