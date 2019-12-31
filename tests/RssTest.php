@@ -6,7 +6,7 @@ use Rss\Rss;
 
 class RssTest extends TestCase
 {
-    public function testRss()
+    public function testRss(): void
     {
         $obj = new Rss('title 1', 'https://example.com/1', 'description 1');
         $obj->addItem('title 2', 'https://example.com/2', 'description 2');
