@@ -1,6 +1,6 @@
 # RSS
 
-[![Build Status](https://secure.travis-ci.org/Gemorroj/Rss.png?branch=master)](https://travis-ci.org/Gemorroj/Rss)
+[![Continuous Integration](https://github.com/Gemorroj/Rss/workflows/Continuous%20Integration/badge.svg?branch=master)](https://github.com/Gemorroj/Rss/actions?query=workflow%3A%22Continuous+Integration%22)
 
 ### Requirements:
 
