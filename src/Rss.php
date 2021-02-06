@@ -1,4 +1,5 @@
 <?php
+
 namespace Rss;
 
 class Rss extends \DOMDocument
@@ -31,7 +32,6 @@ class Rss extends \DOMDocument
         $this->channel = $channel;
     }
 
-
     public function addItem(string $title, string $link, string $description, ?\DateTime $date = null): void
     {
         $item = $this->createElement('item');
@@ -39,20 +39,19 @@ class Rss extends \DOMDocument
         $item->appendChild($this->createElement('link', $link));
         $item->appendChild($this->createElement('description', $description));
 
-        if ($date !== null) {
+        if (null !== $date) {
             $item->appendChild($this->createElement('pubDate', $date->format(\DateTime::RSS)));
         }
 
         $this->channel->appendChild($item);
     }
 
-
     /**
-     * Output rss
+     * Output rss.
      */
     public function output(): void
     {
-        \header('Content-Type: application/rss+xml; charset=' . $this->charset);
+        \header('Content-Type: application/rss+xml; charset='.$this->charset);
         echo $this->saveXML();
     }
 }

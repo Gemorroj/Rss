@@ -4,7 +4,7 @@
 
 ### Requirements:
 
-- PHP >= 7.1.3
+- PHP >= 7.3
 
 
 ### Installation:
@@ -26,5 +26,6 @@ $rss->addItem(
     new DateTime('yesterday')
 );
 
-echo $rss->output(); // rss xml
+echo $rss->saveXML(); // rss xml
+// $rss->output(); // send rss to browser
 ```
