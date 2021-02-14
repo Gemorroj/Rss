@@ -3,7 +3,7 @@
     "description": "rss parser",
     "keywords": ["rss", "Rich Site Summary"],
     "type": "library",
-    "license": "LGPL-3.0",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Gemorroj"
