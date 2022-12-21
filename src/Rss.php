@@ -4,14 +4,8 @@ namespace Rss;
 
 class Rss extends \DOMDocument
 {
-    /**
-     * @var string
-     */
-    protected $charset = 'UTF-8';
-    /**
-     * @var \DOMNode
-     */
-    protected $channel;
+    protected string $charset = 'UTF-8';
+    protected \DOMNode $channel;
 
     public function __construct(string $title, string $link, string $description)
     {
