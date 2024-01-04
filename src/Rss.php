@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rss;
 
 class Rss extends \DOMDocument
@@ -21,20 +23,20 @@ class Rss extends \DOMDocument
         $channel->appendChild($this->createElement('title', $title));
         $channel->appendChild($this->createElement('link', $link));
         $channel->appendChild($this->createElement('description', $description));
-        $channel->appendChild($this->createElement('pubDate', $date->format(\DateTime::RSS)));
+        $channel->appendChild($this->createElement('pubDate', $date->format(\DateTimeInterface::RSS)));
 
         $this->channel = $channel;
     }
 
-    public function addItem(string $title, string $link, string $description, \DateTime $date = null): void
+    public function addItem(string $title, string $link, string $description, \DateTimeInterface $date = null): void
     {
         $item = $this->createElement('item');
         $item->appendChild($this->createElement('title', $title));
         $item->appendChild($this->createElement('link', $link));
         $item->appendChild($this->createElement('description', $description));
 
-        if (null !== $date) {
-            $item->appendChild($this->createElement('pubDate', $date->format(\DateTime::RSS)));
+        if ($date) {
+            $item->appendChild($this->createElement('pubDate', $date->format(\DateTimeInterface::RSS)));
         }
 
         $this->channel->appendChild($item);

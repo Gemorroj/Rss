@@ -23,7 +23,7 @@ $rss->addItem(
     'one item',
     'http://example.com',
     'some description',
-    new DateTime('yesterday')
+    new \DateTime('yesterday')
 );
 
 echo $rss->saveXML(); // rss xml
