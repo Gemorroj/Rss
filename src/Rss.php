@@ -28,7 +28,7 @@ class Rss extends \DOMDocument
         $this->channel = $channel;
     }
 
-    public function addItem(string $title, string $link, string $description, \DateTimeInterface $date = null): void
+    public function addItem(string $title, string $link, string $description, ?\DateTimeInterface $date = null): void
     {
         $item = $this->createElement('item');
         $item->appendChild($this->createElement('title', $title));
