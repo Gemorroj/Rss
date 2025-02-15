@@ -1,6 +1,6 @@
 # RSS
 
-[![Continuous Integration](https://github.com/Gemorroj/Rss/workflows/Continuous%20Integration/badge.svg?branch=master)](https://github.com/Gemorroj/Rss/actions?query=workflow%3A%22Continuous+Integration%22)
+[![Continuous Integration](https://github.com/Gemorroj/Rss/workflows/Continuous%20Integration/badge.svg)](https://github.com/Gemorroj/Rss/actions?query=workflow%3A%22Continuous+Integration%22)
 
 ### Requirements:
 
