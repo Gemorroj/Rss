@@ -28,24 +28,32 @@ class Rss extends \DOMDocument
         $this->channel = $channel;
     }
 
-    public function addItem(string $title, string $link, string $description, ?\DateTimeInterface $date = null, ?string $guid = null): void
+    public function addItem(Item $item): void
     {
-        $item = $this->createElement('item');
-        $item->appendChild($this->createElementWithText('title', $title));
-        $item->appendChild($this->createElementWithText('link', $link));
-        $item->appendChild($this->createElementWithText('description', $description));
+        $itemElement = $this->createElement('item');
+        $itemElement->appendChild($this->createElementWithText('title', $item->title));
+        $itemElement->appendChild($this->createElementWithText('link', $item->link));
+        $itemElement->appendChild($this->createElementWithText('description', $item->description));
 
-        if ($date) {
-            $item->appendChild($this->createElementWithText('pubDate', $date->format(\DateTimeInterface::RSS)));
+        if (null !== $item->date) {
+            $itemElement->appendChild($this->createElementWithText('pubDate', $item->date->format(\DateTimeInterface::RSS)));
         }
 
-        if ($guid) {
-            $guidElement = $this->createElementWithText('guid', $guid);
+        if (null !== $item->guid) {
+            $guidElement = $this->createElementWithText('guid', $item->guid);
             $guidElement->setAttribute('isPermaLink', 'false');
-            $item->appendChild($guidElement);
+            $itemElement->appendChild($guidElement);
         }
 
-        $this->channel->appendChild($item);
+        if (null !== $item->enclosure) {
+            $enclosureElement = $this->createElement('enclosure');
+            $enclosureElement->setAttribute('url', $item->enclosure->url);
+            $enclosureElement->setAttribute('length', (string) $item->enclosure->length);
+            $enclosureElement->setAttribute('type', $item->enclosure->type);
+            $itemElement->appendChild($enclosureElement);
+        }
+
+        $this->channel->appendChild($itemElement);
     }
 
     private function createElementWithText(string $name, string $value): \DOMElement

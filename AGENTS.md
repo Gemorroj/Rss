@@ -2,8 +2,8 @@
 
 ## Project Overview
 
-A PHP library for generating RSS feeds (`gemorroj/rss`). It builds RSS XML documents
-programmatically and outputs or returns the resulting XML.
+A PHP library for generating RSS 2.0 feeds (`gemorroj/rss`). It builds RSS 2.0 XML
+documents programmatically and outputs or returns the resulting XML.
 
 - Namespace: `Rss\` (PSR-4, mapped to `src/`)
 - Tests namespace: `Rss\Tests\` (PSR-4, mapped to `tests/`)

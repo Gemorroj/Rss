@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Rss\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Rss\Enclosure;
+use Rss\Item;
 use Rss\Rss;
 
 class RssTest extends TestCase
@@ -14,7 +16,7 @@ class RssTest extends TestCase
         $date = new \DateTime('2024-01-01 12:00:00');
 
         $obj = new Rss('title 1', 'https://example.com/1', 'description 1', $date);
-        $obj->addItem('title 2', 'https://example.com/2', 'description 2', null, 'guid-2');
+        $obj->addItem(new Item('title 2', 'https://example.com/2', 'description 2', null, 'guid-2'));
 
         $expectedXml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".
             '<rss version="2.0">'.
@@ -29,7 +31,7 @@ class RssTest extends TestCase
     public function testEscaping(): void
     {
         $obj = new Rss('a & b < c', 'https://example.com/?a=1&b=2', 'x & y');
-        $obj->addItem('t & t', 'https://example.com/2?a=1&b=2', 'd < e');
+        $obj->addItem(new Item('t & t', 'https://example.com/2?a=1&b=2', 'd < e'));
 
         $xml = $obj->saveXML();
         self::assertStringContainsString('a &amp; b &lt; c', $xml);
@@ -37,5 +39,16 @@ class RssTest extends TestCase
         self::assertStringContainsString('x &amp; y', $xml);
         self::assertStringContainsString('t &amp; t', $xml);
         self::assertStringContainsString('d &lt; e', $xml);
+    }
+
+    public function testEnclosure(): void
+    {
+        $obj = new Rss('title', 'https://example.com', 'description');
+        $obj->addItem(new Item('title 1', 'https://example.com/1', 'description 1', null, null, new Enclosure('https://example.com/ep1.mp3', 12216320, 'audio/mpeg')));
+
+        self::assertStringContainsString(
+            '<enclosure url="https://example.com/ep1.mp3" length="12216320" type="audio/mpeg"/>',
+            $obj->saveXML()
+        );
     }
 }
