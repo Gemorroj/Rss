@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Rss;
 
-class Rss extends \DOMDocument
+use Rss\Model\Item;
+
+class Generator extends \DOMDocument
 {
     protected string $charset = 'UTF-8';
     protected \DOMNode $channel;
@@ -31,9 +33,18 @@ class Rss extends \DOMDocument
     public function addItem(Item $item): void
     {
         $itemElement = $this->createElement('item');
-        $itemElement->appendChild($this->createElementWithText('title', $item->title));
-        $itemElement->appendChild($this->createElementWithText('link', $item->link));
-        $itemElement->appendChild($this->createElementWithText('description', $item->description));
+
+        if (null !== $item->title) {
+            $itemElement->appendChild($this->createElementWithText('title', $item->title));
+        }
+
+        if (null !== $item->link) {
+            $itemElement->appendChild($this->createElementWithText('link', $item->link));
+        }
+
+        if (null !== $item->description) {
+            $itemElement->appendChild($this->createElementWithText('description', $item->description));
+        }
 
         if (null !== $item->date) {
             $itemElement->appendChild($this->createElementWithText('pubDate', $item->date->format(\DateTimeInterface::RSS)));

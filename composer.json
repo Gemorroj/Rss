@@ -1,7 +1,7 @@
 {
     "name": "gemorroj/rss",
-    "description": "rss parser",
-    "keywords": ["rss", "Rich Site Summary"],
+    "description": "RSS 2.0 feeds generator and parser",
+    "keywords": ["rss", "feed", "generator", "parser"],
     "type": "library",
     "license": "LGPL-3.0-or-later",
     "authors": [
@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=8.2",
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5||^12.5||^13",

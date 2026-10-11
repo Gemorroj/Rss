@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rss;
+namespace Rss\Model;
 
 readonly class Enclosure
 {
