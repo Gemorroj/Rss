@@ -46,3 +46,4 @@ Add or update tests for any behavior change.
 - Do not add comments unless asked.
 - Follow existing code style and structure.
 - Keep the public API minimal and backwards-compatible.
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/).
